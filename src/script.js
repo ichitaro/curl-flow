@@ -414,7 +414,7 @@ scene.add(camera)
 
 // Controls
 const controls = new OrbitControls(camera, canvas)
-controls.target.y = 50
+controls.target.y = 60
 controls.maxDistance = 500
 controls.minPolarAngle = 0.3
 controls.maxPolarAngle = Math.PI / 2 - 0.1
