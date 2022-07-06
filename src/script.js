@@ -87,6 +87,12 @@ class Particles {
       textureWidth,
       renderer
     )
+    const isSafari =
+      !!navigator.userAgent.match(/Safari/i) &&
+      !navigator.userAgent.match(/Chrome/i)
+    if (isSafari) {
+      gpuCompute.setDataType(THREE.HalfFloatType)
+    }
     const texturePosition = gpuCompute.createTexture()
     const textureVelocity = gpuCompute.createTexture()
     ;(function fillTextures() {
