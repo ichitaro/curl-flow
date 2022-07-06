@@ -1,5 +1,6 @@
 import './style.css'
 import * as dat from 'lil-gui'
+import Stats from 'stats.js'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GPUComputationRenderer } from 'three/examples/jsm/misc/GPUComputationRenderer.js'
@@ -382,6 +383,8 @@ class Particles {
 // Debug
 const gui = new dat.GUI()
 gui.close()
+const stats = new Stats()
+document.body.appendChild(stats.dom)
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -530,6 +533,8 @@ window.addEventListener('keyup', (event) => {
 // Animate
 const clock = new THREE.Clock()
 const tick = () => {
+  stats.begin()
+
   const deltaTime = clock.getDelta()
 
   // Update controls
@@ -544,6 +549,7 @@ const tick = () => {
   // Render
   composer.render()
 
+  stats.end()
   window.requestAnimationFrame(tick)
 }
 
