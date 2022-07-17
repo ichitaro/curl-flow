@@ -543,8 +543,6 @@ const tick = () => {
 
   // Render
   composer.render()
-
-  window.requestAnimationFrame(tick)
 }
 
-tick()
+renderer.setAnimationLoop(tick)
